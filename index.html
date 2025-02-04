@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סדנת נגרות לנשים</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            background-color: #f8f4f0;
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #d4a373;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #b5835a;
+        }
+        .contact {
+            margin-top: 20px;
+        }
+        .instagram-icon {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+    </style>
+    <script>
+        function submitForm(e) {
+            e.preventDefault();
+            
+            const form = document.getElementById("registrationForm");
+            const formData = new FormData(form);
+            
+            fetch("https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("הפרטים נשלחו בהצלחה! נחזור אלייך בהקדם.");
+                form.reset();
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("הייתה בעיה בשליחת הפרטים, אנא נסי שוב.");
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>🌿 סדנת נגרות לנשים 🌿</h2>
+        <p>הצטרפי לחוויה ייחודית של יצירה ועוצמה נשית! בסדנה נלמד להשתמש בכלי עבודה אמיתיים ולבנות בעץ בסביבה נעימה ותומכת.</p>
+        <p><strong>🔹 גודל קבוצה:</strong> 8-16 משתתפות</p>
+        <p><strong>🔹 אורך הפעילות:</strong> שעה וחצי - שעתיים</p>
+        <p>הסדנה מתאימה לכל הרמות ואין צורך בניסיון קודם!</p>
+        
+        <form id="registrationForm" onsubmit="submitForm(event)">
+            <label for="name">שם מלא</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">טלפון</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="location">מיקום (איפה תרצי שהסדנה תתקיים?)</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="reason">מה מביא אותך לסדנה?</label>
+            <select id="reason" name="reason" required>
+                <option value="חווייה אישית">אני רוצה לחוות ולבנות בעצמי, בשביל הכיף והחוויה האישית</option>
+                <option value="הובלת קבוצה">אני מובילה קבוצה / אחראית על קהילה ומחפשת פעילות לנשים שאני מלווה</option>
+            </select>
+            
+            <button type="submit">שלחי פרטים</button>
+        </form>
+        
+        <div class="contact">
+            <p>📸 לתמונות והתרשמות <a href="https://www.instagram.com/timber.lyron?igsh=MWZjYXlycnlzNXc0Mw%3D%3D&utm_source=qr" target="_blank"><img class="instagram-icon" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a> timber.lyron</p>
+            <p>📩 ניצור קשר - ליירון 😊</p>
+        </div>
+    </div>
+</body>
+</html>
